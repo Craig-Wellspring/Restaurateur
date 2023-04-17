@@ -1,0 +1,274 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8923820757228816312
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 552993575661610693, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.34212962
+      objectReference: {fileID: 0}
+    - target: {fileID: 552993575661610693, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.014469181
+      objectReference: {fileID: 0}
+    - target: {fileID: 552993575661610693, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_Size.z
+      value: 0.120886266
+      objectReference: {fileID: 0}
+    - target: {fileID: 552993575661610693, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_Center.x
+      value: -0.049033716
+      objectReference: {fileID: 0}
+    - target: {fileID: 552993575661610693, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_Center.y
+      value: 0.0012783273
+      objectReference: {fileID: 0}
+    - target: {fileID: 552993575661610693, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_Center.z
+      value: 0.0021465402
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361561752734751102, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0015
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361561752734751102, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0015
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361561752734751102, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.0015
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361561752734751102, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 2800000, guid: 908b4b8c92228ea4a92c0c2617e196e3, type: 3}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 908b4b8c92228ea4a92c0c2617e196e3, type: 3}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: quality
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: foodName
+      value: Cod Filet
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: foodType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: foodObject
+      value: 
+      objectReference: {fileID: 11400000, guid: c8a70fc151749314d9e4889e16a4f0b1, type: 2}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: temperature
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: prefabReference.m_AssetGUID
+      value: 0aaa59d74aa696c43a970df57e0583bc
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[0].name
+      value: Sweet
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[0].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[1].name
+      value: Sour
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[1].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[2].name
+      value: Spicy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[2].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[3].name
+      value: Salty
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[3].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[4].name
+      value: Savory
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[4].type
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[5].name
+      value: Pungent
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[5].type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[6].name
+      value: Bitter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[6].type
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[7].name
+      value: Menth
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[7].type
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[1].intensity
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[2].intensity
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[3].intensity
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.Array.data[4].intensity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024345218055123018, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 908b4b8c92228ea4a92c0c2617e196e3, type: 3}
+    - target: {fileID: 5751526241525114865, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f83bb6eb6d433fb4187776e0a52414f7, type: 2}
+    - target: {fileID: 6111801224445462052, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_Name
+      value: Cod Filet
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889006014040824990, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889006014040824990, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889006014040824990, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889006014040824990, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889006014040824990, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889006014040824990, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889006014040824990, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889006014040824990, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889006014040824990, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889006014040824990, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889006014040824990, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418147747035923248, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509033217041748795, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 8597813472698094784, guid: 3981817430dccbe49a3a633230c174db, type: 3}
+    - target: {fileID: 7887356856020989786, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+--- !u!1 &3388604016387621276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6111801224445462052, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+  m_PrefabInstance: {fileID: 8923820757228816312}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8619548662422665549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388604016387621276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e250a90ae37fa0e47ad93fa20ac0570c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contaminationRate: 0.1
+  groundContamRate: 100
+--- !u!114 &9065821888554271746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388604016387621276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ec3fe2dfae34f4c8ae944e04f8e967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

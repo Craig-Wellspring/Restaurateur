@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Food
+  m_EditorClassIdentifier: 
+  m_GroupName: Food
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 7432999da6c4488429da3d2fec506995
+  m_SerializeEntries:
+  - m_GUID: 5c61968c5ef7b85408c2147fbc6fa121
+    m_Address: Assets/Prefabs/Holdable Prefabs/Food Prefabs/FoodItems/Cod Fish.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0aaa59d74aa696c43a970df57e0583bc
+    m_Address: Assets/Prefabs/Holdable Prefabs/Food Prefabs/FoodItems/Cod Filet.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6d7f9d78be22900449173b91af004888
+    m_Address: Assets/Prefabs/Holdable Prefabs/Food Prefabs/FoodItems/Seasoning/Lemon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9a2379ae1efd9e248b95f2c0a39505d8
+    m_Address: Assets/Prefabs/Holdable Prefabs/Food Prefabs/FoodItems/Seasoning/Lemon
+      Wedge.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e6f805fe21fe7c24ba2607ac21ea5361
+    m_Address: Assets/Prefabs/Holdable Prefabs/Food Prefabs/FoodItems/Seasoning/Lemon
+      Half.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a4145880f2271ab469c9b064dcbf8f5a
+    m_Address: Assets/Prefabs/Holdable Prefabs/Dish Prefabs/Plate.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3e93ae0d62abfe340820c57bc484dd82
+    m_Address: Assets/Prefabs/Holdable Prefabs/Cube.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bd3382702db02bd43a0eb52b7802b58a
+    m_Address: Assets/Prefabs/Carryable Prefabs/Cardboard Box.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7dff3f708f34762409cda811d2326e25
+    m_Address: Assets/Prefabs/Carryable Prefabs/Equipment Crate.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 530b424c972416d4189d4acd7f1fac07
+    m_Address: Assets/Prefabs/Carryable Prefabs/Food Crate.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: eea3f501bc7a5c64d99bb6efdc2a5a79
+    m_Address: Assets/Prefabs/Gridbound Prefabs/Equipment Prefabs/Large Cooler.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 06919d8f806a6b94e977ed5c2fc95cca
+    m_Address: Assets/Prefabs/Holdable Prefabs/Utensil Prefabs/Chef's Knife.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8393a737eb464ee4b8dad4c2ab1a23d4
+    m_Address: Assets/Prefabs/Holdable Prefabs/Trash Prefabs/Byproduct/Fish Bones.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 728b935820ef35c4db99c007125ad31a
+    m_Address: Assets/Prefabs/Gridbound Prefabs/Equipment Prefabs/Grill.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 083335104eb29084bbf8f0bae7c96d9f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 3a53ee392eee306469cc5c80b8e9f6ba, type: 2}
+    - {fileID: 11400000, guid: c4aa4bd7e1e560d4ba1651ebccdc2fdf, type: 2}
