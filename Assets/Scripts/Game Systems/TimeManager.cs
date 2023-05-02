@@ -26,6 +26,7 @@ public class TimeManager : MonoBehaviour
     // Events
     public static event EventHandler OnTick;
     public static event EventHandler OnSecondChange;
+    public static event EventHandler OnThreeSeconds;
     public static event EventHandler OnTenSeconds;
     public static event EventHandler OnMinuteChange;
     public static event EventHandler OnHourChange;
@@ -128,6 +129,10 @@ public class TimeManager : MonoBehaviour
     void ProgressSeconds() {
         currentSecond++;
         OnSecondChange?.Invoke(this, new OnTimeChangeEventArgs{ current = currentSecond });
+
+        if (currentSecond % 3 == 0) {
+            OnThreeSeconds?.Invoke(this, EventArgs.Empty);
+        }
 
         if (currentSecond % 10 == 0) {
             OnTenSeconds?.Invoke(this, EventArgs.Empty);

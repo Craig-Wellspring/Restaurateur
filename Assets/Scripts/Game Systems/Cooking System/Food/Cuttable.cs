@@ -14,24 +14,25 @@ public class Cuttable : MonoBehaviour
     private bool cuttable = true;
     [SerializeField] private Vector3 modCheckArea;
 
-    private SliderController bar;
+    private FoodItem food;
 
     private void Awake() {
-        bar = GetComponentInChildren<SliderController>();
+        food = GetComponent<FoodItem>();
 
         if (cutProgress > 0)
-            bar.SetShow(true);
+            food.ui.cutProgressSlider.TriggerSlider();
     }
+
     public bool Cut(float _work) {
         if (cuttable) {
-            if (!bar.doShow && cutProgress == 0) {
-                bar.SetShow(true);
-                bar.Show();
-                bar.SetMaxValue(requiredWork);
+            if (cutProgress == 0) {
+                food.ui.cutProgressSlider.InitializeValues(0, requiredWork);
+                food.ui.cutProgressSlider.Show();
             }
-
             cutProgress += _work * Time.deltaTime;
-            bar.SetValue(cutProgress);
+
+            food.ui.cutProgressSlider.TriggerSlider();
+            food.ui.cutProgressSlider.SetValue(cutProgress);
 
             if (cutProgress >= requiredWork)
                 CompleteCut();

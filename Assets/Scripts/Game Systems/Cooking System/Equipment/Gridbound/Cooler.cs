@@ -55,7 +55,7 @@ public class Cooler : MonoBehaviour
         display.SetDisplay(Mathf.RoundToInt(currentTemp));
 
         foreach(HoldablesContainer _compartment in compartments) {
-            _compartment.ambientTemp = currentTemp;
+            _compartment.SetAmbientTemp(currentTemp);
         }
     }
 }

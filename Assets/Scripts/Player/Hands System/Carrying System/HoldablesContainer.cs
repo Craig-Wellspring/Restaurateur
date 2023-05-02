@@ -15,7 +15,7 @@ public class HoldablesContainer : MonoBehaviour, IClickable
 
     // States
     public List<object> storedItems = new List<object>();
-    public float ambientTemp;
+    private float ambientTemp;
 
     // Cache
     public Transform spawnPoint;
@@ -26,11 +26,11 @@ public class HoldablesContainer : MonoBehaviour, IClickable
         anim = GetComponent<Animator>();
         isCarryable = transform.root.TryGetComponent<Carryable>(out Carryable _carryable);
         
-        TimeManager.OnTenSeconds += AdjustTemperatures;
+        TimeManager.OnThreeSeconds += AdjustTemperatures;
     }
 
     private void OnDestroy() {
-        TimeManager.OnTenSeconds -= AdjustTemperatures;
+        TimeManager.OnThreeSeconds -= AdjustTemperatures;
     }
 
     private void Start() {
@@ -41,7 +41,8 @@ public class HoldablesContainer : MonoBehaviour, IClickable
         foreach(object _obj in storedItems) {
             if (_obj.GetType() == typeof(FoodObject)) {
                 FoodObject _food = (FoodObject)_obj;
-                _food.temperature = Mathf.Lerp(_food.temperature, ambientTemp, GameManager.Master.chillRate * tempLossRate);
+                _food.temperature += ((CookingSystem.CalculateHeatChange(_food.mass, _food.conductivity, _food.temperature, ambientTemp) * 15) * tempLossRate);
+
                 if (_food.contamination != null)
                     _food.contamination = Mathf.Clamp((_food.contamination ?? 0) + Perishable.CalculateContamination(_food.temperature), 0, Perishable.maxContam);
             }
@@ -76,6 +77,10 @@ public class HoldablesContainer : MonoBehaviour, IClickable
 
     public void CloseAnim(PlayerManager _player = null, int _L0orR1 = 0) {
         anim?.SetBool("isOpen", false);
+    }
+
+    public void SetAmbientTemp(float _newTemp) {
+        ambientTemp = _newTemp;
     }
 
     public bool TakeItem(HandHold _receivingHand, int _index = 0, bool _fifo = true) {

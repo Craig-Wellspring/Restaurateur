@@ -23,7 +23,7 @@ public class HandHold : MonoBehaviour
             _obj.GetComponentInParent<HandHold>().ReleaseHeldObject();
 
         
-        SliderController bar = _obj.GetComponentInChildren<SliderController>();
+        BillboardController bar = _obj.GetComponent<BillboardController>();
         bar?.Hide();
             
         Rigidbody objRB = _obj.gameObject.GetComponent<Rigidbody>();
@@ -44,8 +44,7 @@ public class HandHold : MonoBehaviour
 
     public void ReleaseHeldObject() {
         if (currentlyHeldObj != null) {
-            SliderController bar = currentlyHeldObj.GetComponentInChildren<SliderController>();
-            if (bar?.doShow == true) bar.Show();
+            BillboardController sliderContainer = currentlyHeldObj.GetComponentInChildren<BillboardController>();
 
             currentlyHeldObj.SetParent(null);
             Rigidbody objRB = currentlyHeldObj.gameObject.GetComponent<Rigidbody>();

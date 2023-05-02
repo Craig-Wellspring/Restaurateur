@@ -4,30 +4,16 @@ using UnityEngine;
 
 public class CookingSystem : MonoBehaviour
 {
-    public static float minDoneness = -100f;
-    public static float maxDoneness = 100f;
     public static float cookingTempThreshold = 135f; // Food begins cooking when temperatures are above 135 degrees F
+    private static float cookingSpeedModifier = 0.6f;
 
-    public static float CalculateCooking(FoodItem food) {
-        float addedDoneness = 0f;
-        if (food.foodTemp >= cookingTempThreshold) {
-            addedDoneness = ((food.foodTemp - cookingTempThreshold) * 1.1f) * (1 / food.densityMod);
-        }
-        return addedDoneness;
-    }
-    
-    public static float Cook(FoodItem _food, float _currentDoneness) {
-        float newDoneness = _currentDoneness;
-        float added = CalculateCooking(_food);
-        if (_currentDoneness + added <= maxDoneness) {
-            newDoneness += added;
-        } else {
-            newDoneness = maxDoneness;
-        }
-
-        return newDoneness;
+    public static float CalculateAddedCookingProgress(FoodItem _food) {
+        return Mathf.Clamp(((((_food.foodTemp - cookingTempThreshold) * 1.2f) / _food.mass) * cookingSpeedModifier), 0, 100);
     }
 
+    public static float CalculateHeatChange(float _mass, float _thermalConductivity, float _subjectTemp, float _environsTemp) {
+        return (0.005f / _mass) * -_thermalConductivity * ((_subjectTemp - _environsTemp) * 2);
+    }
   
   // public enum UtensilTypes {
     // Knife,

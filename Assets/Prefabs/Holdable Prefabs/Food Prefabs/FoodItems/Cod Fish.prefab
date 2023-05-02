@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2783658559805385327, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: type
@@ -215,6 +215,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cod Fish
       objectReference: {fileID: 0}
+    - target: {fileID: 6117931150890683272, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6117931150890683272, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6117931150890683272, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6117931150890683272, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6889006014040824990, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -269,7 +285,11 @@ PrefabInstance:
       objectReference: {fileID: -1687411891319426152, guid: a0c067c9cce429b4098aea6ff64a9afe, type: 3}
     - target: {fileID: 7887356856020989786, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451053628544936604, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
