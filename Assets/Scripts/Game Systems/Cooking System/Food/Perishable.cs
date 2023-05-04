@@ -10,55 +10,50 @@ public class Perishable : MonoBehaviour
     public float contamination { get; private set; } = 0f;
 
     // Settings
-    [SerializeField] private float contaminationRate = 0.1f;
-    [SerializeField] private float groundContamRate = 100f;
+    [SerializeField] private static float contaminationRate = 0.1f;
+    [SerializeField] private float groundContamRate = 5f;
 
     // Cache
     private FoodItem food;
-    private int ticks = 0;
-    public static float maxContam { get; private set; } = 1000f;
+    public static float maxContam { get; private set; } = 100f;
 
     private void Awake() {
-        TimeManager.OnTick += TickCounter;
         food = GetComponent<FoodItem>();
+
+        TimeManager.OnSecondChange += ContaminationCheck;
     }
 
     private void OnDestroy() {
-        TimeManager.OnTick -= TickCounter;
+        TimeManager.OnSecondChange -= ContaminationCheck;
     }
 
-    private void TickCounter(object _sender, System.EventArgs _args) {
-        ticks++;
+    private void ContaminationCheck(object _sender, System.EventArgs _args) {
+        float addedContam = UtilsClass.IsOnGround(transform.position) ? groundContamRate : CalculateContamination(food.foodTemp);
 
-        if (ticks == 5) {
-            ticks -= 5;
-            ContaminationCheck();
-        }
+        if (addedContam != 0) AddContamination(addedContam);
     }
 
-    private void ContaminationCheck() {
-        // On floor, heavily contaminate
-        if (UtilsClass.IsOnGround(transform.position)) {
-            food.SetTemp(Mathf.Lerp(food.foodTemp, GameManager.Master.airTemp, 1f));            
-            contamination = Mathf.Clamp(contamination + groundContamRate, 0, maxContam);
-            return;
-        }
-
-        SetContamination(contamination + CalculateContamination(food.foodTemp, contaminationRate));
-    }
-
-    public static float CalculateContamination(float _currentTemp, float _contamRate = 1f) {
-        float contamTick = 0;
-        switch (_currentTemp) {
+    public static float CalculateContamination(float _temp) {
+        float addedContam = 0;
+        switch (_temp) {
             // Over cooking temperature range, sanitize
-            case > 135: contamTick = -(_currentTemp - 135); break;
+            case > 135: addedContam = -(_temp - 135) * contaminationRate; break;
             // In critical temperature range, contaminate
-            case > 40: contamTick = _contamRate; break;
+            case > 40: addedContam = (_temp - 40) * contaminationRate; break;
             // Under freezing temperature range, sanitize
-            case < 33: contamTick = -(_contamRate * (33 - _currentTemp)); break;
+            case < 33: addedContam = -(33 - _temp) * contaminationRate; break;
         }
 
-        return contamTick;
+        return addedContam;
+    }
+
+    public void AddContamination(float _added) {
+        contamination = Mathf.Clamp(contamination + _added, 0, maxContam);
+
+        float contamPercent = Mathf.Clamp(contamination / maxContam, 0, 1);
+        food.ui.contaminationSlider.SetFillColor(food.ui.contaminationSlider.fillGradient.Evaluate(contamPercent));
+        food.ui.contaminationSlider.SetValue(contamPercent);
+        if (contamination != 0 && contamination != maxContam) food.ui.contaminationSlider.TriggerSlider();
     }
 
     public void SetContamination(float _target) {

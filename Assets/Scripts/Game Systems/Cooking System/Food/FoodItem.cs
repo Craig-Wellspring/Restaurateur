@@ -152,19 +152,22 @@ public class FoodItem : HoldableItem, IClickable
     // Temperature
     private void StabilizeTemp(object _sender, System.EventArgs _args) {
         foodTemp += CookingSystem.CalculateHeatChange(mass, thermalConductivity, foodTemp, environsTemp);
-        ui.UpdateTempFillColor(foodTemp);
-        ui.temperatureSlider.SetValue(Mathf.Clamp(foodTemp / 100, 0, 1));
-        ui.temperatureSlider.TriggerSlider();
+        UpdateTempDisplay(foodTemp);
+        ui.temperatureGauge.TriggerSlider();
     }
 
     public void SetTemp(float _newTemp) {
         foodTemp = _newTemp;
-        ui.UpdateTempFillColor(foodTemp);
-        ui.temperatureSlider.SetValue(Mathf.Clamp(foodTemp / 100, 0, 1));
+        UpdateTempDisplay(foodTemp);
     }
     
     public void SetEnvironsTemp(float _newTemp) {
         environsTemp = _newTemp;
+    }
+
+    public void UpdateTempDisplay(float _temp) {
+        ui.temperatureGauge.SetFillColor(ui.temperatureGauge.fillGradient.Evaluate(Mathf.Clamp(Scripts.Utils.UtilsClass.ConvertFToC(_temp) / 100, 0, 1)));
+        ui.tempNumDisplay.text = Mathf.RoundToInt(_temp).ToString()+ "°";
     }
 
     // Flavor

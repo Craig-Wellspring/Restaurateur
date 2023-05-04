@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class FoodUIManager : MonoBehaviour
 {
-    public SliderController temperatureSlider;
+    public SliderController temperatureGauge;
+    public TextMeshProUGUI tempNumDisplay;
+    public SliderController contaminationSlider;
     public SliderController cookDonenessSlider;
     public SliderController overcookSlider;
     public SliderController cutProgressSlider;
@@ -15,11 +18,11 @@ public class FoodUIManager : MonoBehaviour
     private void Awake() {
         canvasController = GetComponent<BillboardController>();
 
-        temperatureSlider.OnTrigger += TriggerUI;
+        temperatureGauge.OnTrigger += TriggerUI;
     }
 
     private void OnDestroy() {
-        temperatureSlider.OnTrigger -= TriggerUI;
+        temperatureGauge.OnTrigger -= TriggerUI;
     }
 
     private void TriggerUI(object _sender, System.EventArgs _args) {
@@ -28,9 +31,5 @@ public class FoodUIManager : MonoBehaviour
         } else {
             canvasController.Show();
         }
-    }
-
-    public void UpdateTempFillColor(float _temp) {
-        temperatureSlider.SetFillColor(GameManager.Master.tempGradient.Evaluate(Mathf.Clamp(_temp / 100, 0, 1)));
     }
 }

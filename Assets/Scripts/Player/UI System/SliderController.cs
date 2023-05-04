@@ -20,6 +20,7 @@ public class SliderController : MonoBehaviour
 
     // Settings
     public float timeToHide = 3f;
+    public Gradient fillGradient;
 
     // States
     private float timer = 0f;

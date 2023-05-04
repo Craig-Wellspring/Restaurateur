@@ -608,6 +608,14 @@ namespace Scripts.Utils {
         public static Vector3 RotatePointAroundPivot(Vector3 point, Vector3 pivot, Vector3 angles) {
             return Quaternion.Euler(angles) * (point - pivot) + pivot;
         }
+
+        public static float ConvertFToC(float _fDegrees) {
+            return (_fDegrees - 32f) * (5f / 9f);
+        }
+
+        public static float ConvertCToF(float _cDegrees) {
+            return (_cDegrees * (5f / 9f)) + 32f;
+        }
         
         /// <summary>
         /// Returns all monobehaviours (casted to T)

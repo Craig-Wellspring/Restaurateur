@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
 
     // States
     public float airTemp { get; private set; } = 70f;
-    public Gradient tempGradient;
 
     // Players
     public List<PlayerManager> players { get; private set; }

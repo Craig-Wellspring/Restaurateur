@@ -7,6 +7,7 @@ using TMPro;
 public class InventorySlot : MonoBehaviour
 {
     // Settings
+    [SerializeField] private Gradient tempGradient;
     [SerializeField] private Gradient qualityGradient;
     [SerializeField] private Sprite defaultImage;
 
@@ -27,7 +28,7 @@ public class InventorySlot : MonoBehaviour
     }
 
     private void UpdateTextColors(FoodObject _obj) {
-        tempText.color = GameManager.Master.tempGradient.Evaluate(Mathf.Clamp(_obj.temperature / 100, 0, 1));
+        tempText.color = tempGradient.Evaluate(Mathf.Clamp(Scripts.Utils.UtilsClass.ConvertFToC(_obj.temperature) / 100, 0, 1));
         qualityText.color = qualityGradient.Evaluate(Mathf.Clamp(_obj.quality / 100, 0, 1));
     }
 

@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class Cuttable : MonoBehaviour
 {
+    // Settings
     [SerializeField] private GameObject result;
     [SerializeField] private int resultQuantity = 1;
     [SerializeField] private bool alternateResultRotation = true;
     [SerializeField] private GameObject byproduct;
     [SerializeField] private int byproductQuantity = 0;
+
     [SerializeField] private float requiredWork = 100f;
-    public float cutProgress { get; private set; } = 0f;
-    private bool cuttable = true;
     [SerializeField] private Vector3 modCheckArea;
 
+    // States
+    public float cutProgress { get; private set; } = 0f;
+    private bool cuttable = true;
+
+    // Cache
     private FoodItem food;
 
     private void Awake() {
