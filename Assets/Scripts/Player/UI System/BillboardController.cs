@@ -36,7 +36,7 @@ public class BillboardController : MonoBehaviour
                     case StickyPosition.Front: offset = Vector3.up * transform.localPosition.z; break;
                 }
                 billboardTransform.position = transform.root.position + offset;
-                transform.LookAt(billboardTransform.position + GameManager.Master.mainCam.transform.forward);
+                billboardTransform.LookAt(billboardTransform.position + GameManager.Master.mainCam.transform.forward);
             }
         } else {
             if (isShowing) Hide();
