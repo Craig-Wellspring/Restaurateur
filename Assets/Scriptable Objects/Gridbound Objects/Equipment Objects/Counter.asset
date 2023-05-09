@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Counter
   m_EditorClassIdentifier: 
   prefab: {fileID: 7781151984306300549, guid: 44b37462fb066e54796f22deccaf2602, type: 3}
-  gridWidth: 3
-  gridHeight: 3
+  gridWidth: 4
+  gridHeight: 4
   verticalMeters: 1

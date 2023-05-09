@@ -15,7 +15,8 @@ public class Item : MonoBehaviour {
     }
 
     public void LoadRefs() {
-        prefabReference.LoadAssetAsync<GameObject>().Completed += (_go) => { prefab = _go.Result; };
+        if (prefabReference != null)
+            prefabReference.LoadAssetAsync<GameObject>().Completed += (_go) => { prefab = _go.Result; };
     }
 }
 
@@ -27,4 +28,5 @@ public enum ItemType {
     Cookware, // Kitchen items: Pots, pans, knives, whisks
     Tableware, // Dining items: Plates, cups, forks
     Rubbish, // Has no use
+    Building, // Gridbound building items like Walls and Doors
 }

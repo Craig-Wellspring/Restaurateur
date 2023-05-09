@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8afdfb74e2ba61f42b54dc7f15ff53ea, type: 3}
   m_Name: Doorframe
   m_EditorClassIdentifier: 
-  objName: Doorframe
-  objImage: {fileID: 0}
-  prefab: {fileID: 3708353275045883016, guid: b0ae0c569d3304b42ad35ecdf1fbf58c, type: 3}
-  gridWidth: 6
+  prefab: {fileID: 4052508538632959538, guid: b0ae0c569d3304b42ad35ecdf1fbf58c, type: 3}
+  gridWidth: 8
   gridHeight: 1
   verticalMeters: 3

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Grill
   m_EditorClassIdentifier: 
   prefab: {fileID: 4055331873971201531, guid: 728b935820ef35c4db99c007125ad31a, type: 3}
-  gridWidth: 4
-  gridHeight: 3
+  gridWidth: 5
+  gridHeight: 4
   verticalMeters: 1.4

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Large Cooler
   m_EditorClassIdentifier: 
   prefab: {fileID: 3829978923336946576, guid: eea3f501bc7a5c64d99bb6efdc2a5a79, type: 3}
-  gridWidth: 5
-  gridHeight: 3
+  gridWidth: 7
+  gridHeight: 4
   verticalMeters: 2.4

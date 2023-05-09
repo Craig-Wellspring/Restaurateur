@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8afdfb74e2ba61f42b54dc7f15ff53ea, type: 3}
   m_Name: Wall Pillar
   m_EditorClassIdentifier: 
-  objName: Pillar
-  prefab: {fileID: 8629440174187785821, guid: e5d0c44bf108823409dae34e71f262d3, type: 3}
+  prefab: {fileID: 8974054144839185639, guid: e5d0c44bf108823409dae34e71f262d3, type: 3}
   gridWidth: 1
   gridHeight: 1
   verticalMeters: 3

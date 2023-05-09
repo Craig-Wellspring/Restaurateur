@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8afdfb74e2ba61f42b54dc7f15ff53ea, type: 3}
   m_Name: Wall Segment
   m_EditorClassIdentifier: 
-  objName: Wall Segment
-  prefab: {fileID: 4104845460450290395, guid: c5f515da39f13a540bcec396c1bb4a50, type: 3}
-  gridWidth: 6
+  prefab: {fileID: 3728003705081163873, guid: c5f515da39f13a540bcec396c1bb4a50, type: 3}
+  gridWidth: 8
   gridHeight: 1
   verticalMeters: 3

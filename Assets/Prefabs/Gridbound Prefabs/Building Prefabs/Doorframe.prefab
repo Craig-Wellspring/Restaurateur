@@ -44,9 +44,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4052508538632959538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dd11e9170dc69849b3333f42fc3ae58, type: 3}
+  m_Script: {fileID: 11500000, guid: f6ef1760ea55e89408d564d0dc1ed475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  type: 7
+  prefabReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
 --- !u!33 &349429410967528237
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     // Global grid settings
-    public float cellSize { get; private set; } = 0.333f;
+    public float cellSize { get; private set; } = 0.25f;
     [SerializeField] private Transform gridVisualizerPrefab;
 
     // Building Grids
@@ -14,7 +14,7 @@ public class GridManager : MonoBehaviour
 
     private void Awake()
     {
-        CreateBuildingGrid(new Vector2Int(90, 90), new Vector3(0,0,0));
+        CreateBuildingGrid(new Vector2Int(100, 100), new Vector3(0,0,0));
     }
 
     public GridSector<BuildingGridTile> CreateBuildingGrid(Vector2Int _gridDimensions, Vector3 _originPos) {
