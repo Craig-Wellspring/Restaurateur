@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 04adf2cda2522914db7a907c1ab7c4ba, type: 3}
-  type: 2
+  itemType: 2
   prefabReference:
     m_AssetGUID: eea3f501bc7a5c64d99bb6efdc2a5a79
     m_SubObjectName: 

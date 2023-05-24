@@ -60,9 +60,17 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: itemType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: foodObject
       value: 
       objectReference: {fileID: 11400000, guid: bf4f02d273bf5684f9afbf6e22761368, type: 2}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: componentType
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: flavorProfile.Array.size
       value: 8
@@ -147,6 +155,14 @@ PrefabInstance:
       propertyPath: sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6aa55106cdabc2e4eb5ed31617b598f0, type: 3}
+    - target: {fileID: 4049086654534439289, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049086654534439289, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5751526241525114865, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -154,6 +170,10 @@ PrefabInstance:
     - target: {fileID: 6111801224445462052, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: m_Name
       value: Lemon Wedge
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875697476989737871, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6889006014040824990, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: m_RootOrder
@@ -201,12 +221,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7418147747035923248, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7509033217041748795, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -4424427504967172240, guid: 613f6bf120df6d047bf0f028481f2fbf, type: 3}
+    - target: {fileID: 7887356856020989786, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451053628544936604, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
 --- !u!1 &1072298190870199133 stripped
@@ -242,5 +270,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e250a90ae37fa0e47ad93fa20ac0570c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contaminationRate: 0.2
   groundContamRate: 100

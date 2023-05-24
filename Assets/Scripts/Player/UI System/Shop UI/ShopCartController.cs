@@ -74,7 +74,7 @@ public class ShopCartController : MonoBehaviour
             foreach(CartItem _item in cartItems) {
                 Debug.Log("Buy " + _item.count + " " + _item.obj.prefab.name);
                 if (_item.obj.prefab.TryGetComponent<Item>(out Item _invItem)) {
-                    switch (_invItem.type) {
+                    switch (_invItem.itemType) {
                         case ItemType.Food:
                             // Add to ListOfFoods
                             _foods.Add(_item);

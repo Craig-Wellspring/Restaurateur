@@ -61,7 +61,7 @@ public class HoldablesContainer : MonoBehaviour, IClickable
                     anim?.SetTrigger("QuickOpen");
                 }
             } else { // Hand full - store item
-                if (exclusiveType == ItemType.None || handObj.GetComponent<Item>().type == exclusiveType) {
+                if (exclusiveType == ItemType.None || handObj.GetComponent<Item>().itemType == exclusiveType) {
                     if (StoreItem(handObj.gameObject)) {
                         _hand.TakeHeldObject(spawnPoint);
                         anim?.SetTrigger("QuickOpen");

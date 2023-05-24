@@ -27,6 +27,23 @@ public class HoldableItem : Item, IClickable
             if (handObj == this.transform)
                 _hand.ReleaseHeldObject();
                 
+
+
+
+            if (handObj.TryGetComponent<FoodItem>(out FoodItem _heldFood)) {
+                if (player.mouse.mouseoverObject.TryGetComponent<Dinnerware>(out Dinnerware _targetDish)) {
+                    _targetDish.TryAddToPlate(_heldFood);
+                    _hand.PlaceHeldObject(_targetDish.dishManager.transform.position, Quaternion.identity);
+                }
+                return;
+            }
+            if (handObj.TryGetComponent<Dinnerware>(out Dinnerware _heldDish)) {
+                if (player.mouse.mouseoverObject.TryGetComponent<FoodItem>(out FoodItem _targetFood)) {
+                    _heldDish.TryAddToPlate(_targetFood);
+                }
+                return;
+            }
+
             return;
         }
     }

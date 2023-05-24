@@ -163,7 +163,17 @@ public class GhostController : MonoBehaviour
             break;
             
             case SelectorType.Object:
-                SetSelectorMesh(true, true, currentGridObj?.prefab.GetComponent<MeshFilter>().sharedMesh);
+                MeshFilter[] meshFilters = currentGridObj?.prefab.GetComponentsInChildren<MeshFilter>();
+                CombineInstance[] combineArray = new CombineInstance[meshFilters.Length];
+                int i = 0;
+                while (i < meshFilters.Length) {
+                    combineArray[i].mesh = meshFilters[i].sharedMesh;
+                    combineArray[i].transform = meshFilters[i].transform.localToWorldMatrix;
+                    i++;
+                }
+                Mesh combinedMesh = new Mesh();
+                combinedMesh.CombineMeshes(combineArray);
+                SetSelectorMesh(true, true, combinedMesh);
             break;
 
             case SelectorType.Demolish:

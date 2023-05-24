@@ -211,10 +211,6 @@ public class PlayerHandsSystem : MonoBehaviour
                         }
                         return;
                     }
-
-                    if (handObj.TryGetComponent<DishItem>(out DishItem _dish)) {
-
-                    }
                 }
             }
         }

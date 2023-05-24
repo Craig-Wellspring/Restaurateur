@@ -5,7 +5,7 @@ using UnityEngine.AddressableAssets;
 
 public class FoodItem : HoldableItem, IClickable
 {
-    public enum FoodTypes {
+    public enum FoodType {
         None,
         Fish,
         Shellfish,
@@ -20,8 +20,18 @@ public class FoodItem : HoldableItem, IClickable
         Fat,
     }
 
+    public enum DishComponentType {
+        None,
+        Main,
+        Side,
+        Topping,
+        Sauce,
+        Garnish
+    }
+
     // Settings
-    [SerializeField] private FoodTypes foodType;
+    [SerializeField] private FoodType foodType;
+    public DishComponentType componentType;
     public float mass = 1f;
     
     // Quality and Flavor

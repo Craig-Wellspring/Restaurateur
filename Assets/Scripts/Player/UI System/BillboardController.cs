@@ -18,6 +18,7 @@ public class BillboardController : MonoBehaviour
     private CanvasGroup billboardCanvas;
     public bool isShowing { get; private set; } = false;
     private float timer = 0f;
+    public bool isLocked { get; private set; } = false;
 
     private void Awake() {
         billboardCanvas = billboardTransform.GetComponent<CanvasGroup>();
@@ -48,13 +49,25 @@ public class BillboardController : MonoBehaviour
     }
 
     public void Show() {
-        billboardCanvas.alpha = 1;
-        isShowing = true;
-        ResetTimer();
+        if (!isLocked) {
+            billboardCanvas.alpha = 1;
+            isShowing = true;
+            ResetTimer();
+        }
     }
 
     public void Hide() {
-        billboardCanvas.alpha = 0;
-        isShowing = false;
+        if (!isLocked) {
+            billboardCanvas.alpha = 0;
+            isShowing = false;
+        }
+    }
+
+    public void Lock() {
+        isLocked = true;
+    }
+
+    public void Unlock() {
+        isLocked = false;
     }
 }

@@ -26,10 +26,12 @@ public class FoodUIManager : MonoBehaviour
     }
 
     private void TriggerUI(object _sender, System.EventArgs _args) {
-        if (canvasController.isShowing) {
-            canvasController.ResetTimer();
-        } else {
-            canvasController.Show();
+        if (!canvasController.isLocked) {
+            if (canvasController.isShowing) {
+                canvasController.ResetTimer();
+            } else {
+                canvasController.Show();
+            }
         }
     }
 }

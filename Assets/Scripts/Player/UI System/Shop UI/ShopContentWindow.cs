@@ -17,12 +17,12 @@ public class ShopContentWindow : MonoBehaviour
     public void LoadInventory(List<ShopInventoryObject> _inventory) {
         foreach (ShopInventoryObject _item in _inventory) {
             if (_item.prefab != null && _item.prefab.TryGetComponent<Item>(out Item _invItem)) {
-                if (!lists.ContainsKey(_invItem.type)) {
-                    lists.Add(_invItem.type, new List<ShopInventoryObject>());
-                    tabsContainer.ActivateTab(_invItem.type.ToString());
+                if (!lists.ContainsKey(_invItem.itemType)) {
+                    lists.Add(_invItem.itemType, new List<ShopInventoryObject>());
+                    tabsContainer.ActivateTab(_invItem.itemType.ToString());
                 }
 
-                lists[_invItem.type].Add(_item);
+                lists[_invItem.itemType].Add(_item);
             }
         }
 

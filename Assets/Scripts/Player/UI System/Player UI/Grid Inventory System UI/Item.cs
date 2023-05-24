@@ -5,7 +5,7 @@ using UnityEngine.AddressableAssets;
 
 public class Item : MonoBehaviour {
     public Sprite sprite;
-    public ItemType type;
+    public ItemType itemType;
 
     public GameObject prefab { get; private set; }
     [SerializeField] private AssetReferenceT<GameObject> prefabReference;

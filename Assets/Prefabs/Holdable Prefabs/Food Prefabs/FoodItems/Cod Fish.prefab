@@ -124,12 +124,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: itemType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: foodObject
       value: 
       objectReference: {fileID: 11400000, guid: 1f1b89fcbfeed6f429e471d3a5a1bea4, type: 2}
     - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: temperature
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: componentType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: flavors.Array.size
