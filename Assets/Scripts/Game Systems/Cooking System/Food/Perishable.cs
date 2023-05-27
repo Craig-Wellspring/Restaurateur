@@ -28,7 +28,7 @@ public class Perishable : MonoBehaviour
     }
 
     private void ContaminationCheck(object _sender, System.EventArgs _args) {
-        float addedContam = UtilsClass.IsOnGround(transform.position) ? groundContamRate : CalculateContamination(food.foodTemp);
+        float addedContam = UtilsClass.IsOnGround(transform.position) ? groundContamRate : CalculateContamination(food.thermalBody.massTemp);
 
         if (addedContam != 0) AddContamination(addedContam);
     }

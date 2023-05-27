@@ -1517,6 +1517,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6889006014040824990}
   - component: {fileID: 3397757696166583003}
+  - component: {fileID: 8734664826916469403}
   - component: {fileID: 7509033217041748795}
   - component: {fileID: 5751526241525114865}
   - component: {fileID: 552993575661610692}
@@ -1558,7 +1559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  type: 1
+  itemType: 0
   prefabReference:
     m_AssetGUID: 
     m_SubObjectName: 
@@ -1567,8 +1568,39 @@ MonoBehaviour:
   handOffset: {x: 0, y: 0, z: 0}
   handRotation: {x: 0, y: 0, z: 0}
   foodType: 0
+  componentType: 0
+  flavorProfile:
+    profile:
+    - type: 1
+      intensity: 0
+    - type: 3
+      intensity: 0
+    - type: 4
+      intensity: 0
+    - type: 2
+      intensity: 0
+    - type: 6
+      intensity: 0
+    - type: 5
+      intensity: 0
+    - type: 7
+      intensity: 0
+    - type: 8
+      intensity: 0
+  thermalBody: {fileID: 0}
+--- !u!114 &8734664826916469403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6111801224445462052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2694ba9f3bf861b4ba97b0f1eac552dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   mass: 1
-  flavorProfile: []
   thermalConductivity: 1
 --- !u!33 &7509033217041748795
 MeshFilter:

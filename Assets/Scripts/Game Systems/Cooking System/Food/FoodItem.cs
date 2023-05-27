@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
+[RequireComponent(typeof(ThermalBody))]
 public class FoodItem : HoldableItem, IClickable
 {
     public enum FoodType {
@@ -30,41 +31,31 @@ public class FoodItem : HoldableItem, IClickable
     }
 
     // Settings
-    [SerializeField] private FoodType foodType;
+    public FoodType foodType;
     public DishComponentType componentType;
-    public float mass = 1f;
     
     // Quality and Flavor
     public float quality { get; private set; } = 1f;
-    public List<Seasoning.Flavor> flavorProfile = new List<Seasoning.Flavor>() {
-        new Seasoning.Flavor(Seasoning.FlavorType.Sweet, 0),
-        new Seasoning.Flavor(Seasoning.FlavorType.Sour, 0),
-        new Seasoning.Flavor(Seasoning.FlavorType.Spicy, 0),
-        new Seasoning.Flavor(Seasoning.FlavorType.Salty, 0),
-        new Seasoning.Flavor(Seasoning.FlavorType.Savory, 0),
-        new Seasoning.Flavor(Seasoning.FlavorType.Pungent, 0),
-        new Seasoning.Flavor(Seasoning.FlavorType.Bitter, 0),
-        new Seasoning.Flavor(Seasoning.FlavorType.Menth, 0),
-    };
-
-    // Temperature
-    [Tooltip("Density of material. Higher conductivity changes temperature more quickly. 1 is equally as dense as water. 0 is a perfect thermal insulator.")]
-    public float thermalConductivity = 1f;
-    public float foodTemp { get; private set; } = 70f;
-    public float environsTemp { get; private set; } = 70f;
+    public FlavorProfile flavorProfile = new();
 
     // Cache
+    public ThermalBody thermalBody { get; private set; }
     public FoodUIManager ui { get; private set; }
 
+
     private void Awake() {
-        TimeManager.OnTick += StabilizeTemp;
         base.LoadRefs();
 
+        thermalBody = GetComponent<ThermalBody>();
         ui = GetComponentInChildren<FoodUIManager>();
 
+        thermalBody.TempTick += OnTempTick;
+
         // Find mass
+        thermalBody = GetComponent<ThermalBody>();
         TryGetComponent<Rigidbody>(out Rigidbody _rb);
-        if (_rb.mass != mass) _rb.mass = mass;
+        if (_rb.mass != thermalBody.mass) _rb.mass = thermalBody.mass;
+
 
         // Populate flavor profile
         // foreach (string _flavor in System.Enum.GetNames(typeof(Seasoning.FlavorType))) {
@@ -74,29 +65,37 @@ public class FoodItem : HoldableItem, IClickable
     }
 
     private void OnDestroy() {
-        TimeManager.OnTick -= StabilizeTemp;
+        thermalBody.TempTick -= OnTempTick;
     }
 
     // Season
     public override void Click(PlayerManager _player, int _L0orR1) {
-        base.Click(_player, _L0orR1);
-
         // Check hand
         HandHold _hand = _L0orR1 == 0 ? _player.leftHand : _player.rightHand;
         Transform handObj = _hand.GetHeldObject();
 
-        // If this object is clicked and the player is holding an object
-        if (handObj != null
-            // and the clicked object is not the held object
-            && handObj != this.transform
-            // and the clicked object is not a seasoning
-            && !GetComponent<Seasoning>()
-            // and the held object is a seasoning
-            && handObj.TryGetComponent<Seasoning>(out Seasoning _seasoning)) {
-            // Season the clicked object with the held seasoning
-            if (_seasoning.Consume()) {
-                AddFlavor(_seasoning.type, _seasoning.intensity);
+        // If this object is clicked and the player is holding an object and it is not the held object
+        if (handObj != null && handObj != this.transform) {
+            if (handObj.TryGetComponent<Dinnerware>(out Dinnerware _heldDish)) {
+                Transform platePos = _heldDish.dishManager.TryAddToPlate(this);
+                _hand.PlaceHeldObject(platePos.position, platePos.rotation, () => {
+                    Destroy(handObj.gameObject);
+                });
+
+                return;
             }
+
+            // and this object is not a seasoning
+            if (!GetComponent<Seasoning>()
+                // and the held object is a seasoning
+                && handObj.TryGetComponent<Seasoning>(out Seasoning _seasoning)) {
+                    // Season the clicked object with the held seasoning
+                    if (_seasoning.Consume()) {
+                        AddFlavor(_seasoning.type, _seasoning.intensity);
+                    }
+            }
+        } else {
+            base.Click(_player, _L0orR1);
         }
     }
 
@@ -105,9 +104,15 @@ public class FoodItem : HoldableItem, IClickable
             _perishable.SetContamination((float)_sourcePerishable.contamination);
         }
 
+        foodType = _source.foodType;
+        componentType = _source.componentType;
+
+        thermalBody.mass = _source.thermalBody.mass;
+        thermalBody.thermalConductivity = _source.thermalBody.thermalConductivity;
+
         SetQuality(_source.quality);
         OverrideFlavorProfile(_source.flavorProfile);
-        SetTemp(_source.foodTemp);
+        SetTemp(_source.thermalBody.massTemp);
     }
 
     public override HoldableObject GenerateObject() {
@@ -116,7 +121,9 @@ public class FoodItem : HoldableItem, IClickable
         TryGetComponent<Cuttable>(out Cuttable _cuttable);
         GameObject _go = prefab == null ? this.gameObject : prefab;
 
-        return FoodObject.Create(_go, sprite, quality, flavorProfile, mass, thermalConductivity, foodTemp, _perishable?.contamination, _cookable?.cookedProgress + _cookable?.overcookedProgress, _cuttable?.cutProgress);
+        Vector3 _thermalProps = new Vector3(thermalBody.mass, thermalBody.thermalConductivity, thermalBody.massTemp);
+
+        return FoodObject.Create(_go, sprite, quality, flavorProfile, _thermalProps.x, _thermalProps.y, _thermalProps.z, _perishable?.contamination, _cookable?.cookedProgress + _cookable?.overcookedProgress, _cuttable?.cutProgress);
     }
 
     public override HoldableObject GenerateObject(Vector2? _modifier) {
@@ -126,14 +133,34 @@ public class FoodItem : HoldableItem, IClickable
         GameObject _go = prefab == null ? this.gameObject : prefab;
         float _quality = (_modifier != null && _modifier != Vector2.zero) ? Random.Range(_modifier.Value.x, _modifier.Value.y) : quality;
 
-        return FoodObject.Create(_go, sprite, _quality, flavorProfile, mass, thermalConductivity, foodTemp, _perishable?.contamination, _cookable?.cookedProgress + _cookable?.overcookedProgress, _cuttable?.cutProgress);
+        Vector3 _thermalProps = new Vector3(thermalBody?.mass ?? GetComponent<ThermalBody>().mass, thermalBody?.thermalConductivity ?? GetComponent<ThermalBody>().thermalConductivity, thermalBody?.massTemp ?? GetComponent<ThermalBody>().massTemp);
+
+        return FoodObject.Create(_go, sprite, _quality, flavorProfile, _thermalProps.x, _thermalProps.y, _thermalProps.z, _perishable?.contamination, _cookable?.cookedProgress + _cookable?.overcookedProgress, _cuttable?.cutProgress);
     }
+
+
+    // Temperature
+    public void UpdateTempDisplay(float _temp) {
+        ui.temperatureGauge.SetFillColor(ui.temperatureGauge.fillGradient.Evaluate(Mathf.Clamp(Scripts.Utils.UtilsClass.ConvertFToC(_temp) / 100, 0, 1)));
+        ui.tempNumDisplay.text = Mathf.RoundToInt(_temp).ToString()+ "°";
+    }
+
+    public void SetTemp(float _newTemp) {
+        thermalBody.SetTemp(_newTemp);
+        UpdateTempDisplay(_newTemp);
+    }
+
+    public void OnTempTick(object _sender, System.EventArgs _args) {
+        UpdateTempDisplay(thermalBody.massTemp);
+        ui.temperatureGauge.TriggerSlider();
+    }
+
 
     // Quality
     private void AssessQuality() {
         string _assessment = "";
         _assessment += "Flavor profile for " + transform.name + ": (";
-        foreach(var _flavor in flavorProfile) {
+        foreach(var _flavor in flavorProfile.profile) {
             _assessment += _flavor.type + ": " + _flavor.intensity + ", ";
         }
 
@@ -157,36 +184,15 @@ public class FoodItem : HoldableItem, IClickable
         quality = _new;
         return quality;
     }
-    
 
-    // Temperature
-    private void StabilizeTemp(object _sender, System.EventArgs _args) {
-        foodTemp += CookingSystem.CalculateHeatChange(mass, thermalConductivity, foodTemp, environsTemp);
-        UpdateTempDisplay(foodTemp);
-        ui.temperatureGauge.TriggerSlider();
-    }
-
-    public void SetTemp(float _newTemp) {
-        foodTemp = _newTemp;
-        UpdateTempDisplay(foodTemp);
-    }
-    
-    public void SetEnvironsTemp(float _newTemp) {
-        environsTemp = _newTemp;
-    }
-
-    public void UpdateTempDisplay(float _temp) {
-        ui.temperatureGauge.SetFillColor(ui.temperatureGauge.fillGradient.Evaluate(Mathf.Clamp(Scripts.Utils.UtilsClass.ConvertFToC(_temp) / 100, 0, 1)));
-        ui.tempNumDisplay.text = Mathf.RoundToInt(_temp).ToString()+ "°";
-    }
 
     // Flavor
-    public void AddFlavor(Seasoning.FlavorType _flavor, int _amount = 1) {
-        flavorProfile.Find(flv => flv.type == _flavor).AddFlavor(_amount);
+    public void AddFlavor(FlavorType _flavor, int _amount = 1) {
+        flavorProfile.profile.Find(flv => flv.type == _flavor).AddFlavor(_amount);
         AssessQuality();
     }
 
-    public void OverrideFlavorProfile(List<Seasoning.Flavor> _newFlavorProfile) {
+    public void OverrideFlavorProfile(FlavorProfile _newFlavorProfile) {
         flavorProfile = _newFlavorProfile;
     }
 }
@@ -196,7 +202,7 @@ public class FoodItem : HoldableItem, IClickable
 public class FoodObject : HoldableObject
 {
     public float quality;
-    public List<Seasoning.Flavor> flavorProfile;
+    public FlavorProfile flavorProfile;
     public float mass;
     public float conductivity;
     public float temperature;
@@ -204,7 +210,7 @@ public class FoodObject : HoldableObject
     public float? doneness;
     public float? cutProgress;
 
-    public static FoodObject Create(GameObject _prefab, Sprite _image, float _quality, List<Seasoning.Flavor> _flavorProfile, float _mass, float _conductivity, float _temperature, float? _contamination = null, float? _doneness = null, float? _cutProgress = null) {
+    public static FoodObject Create(GameObject _prefab, Sprite _image, float _quality, FlavorProfile _flavorProfile, float _mass, float _conductivity, float _temp, float? _contamination = null, float? _doneness = null, float? _cutProgress = null) {
         FoodObject _newObj = CreateInstance<FoodObject>();
 
         _newObj.prefab = _prefab;
@@ -212,9 +218,10 @@ public class FoodObject : HoldableObject
 
         _newObj.quality = _quality;
         _newObj.flavorProfile = _flavorProfile;
+
         _newObj.mass = _mass;
         _newObj.conductivity = _conductivity;
-        _newObj.temperature = _temperature;
+        _newObj.temperature = _temp;
 
         _newObj.contamination = _contamination;
         _newObj.doneness = _doneness;
@@ -227,9 +234,13 @@ public class FoodObject : HoldableObject
         Transform _newObj = Instantiate(this.prefab.transform, _pos, _rot);
         _newObj.name = this.prefab.name;
         _newObj.TryGetComponent<FoodItem>(out FoodItem _newFood);
+
         _newFood.SetQuality(this.quality);
         _newFood.OverrideFlavorProfile(this.flavorProfile);
+
         _newFood.SetTemp(this.temperature);
+        _newFood.thermalBody.mass = mass;
+        _newFood.thermalBody.thermalConductivity = conductivity;
 
         if (this.contamination != null && _newObj.TryGetComponent<Perishable>(out Perishable _newPerishable)) {
             _newPerishable.SetContamination((float)this.contamination);

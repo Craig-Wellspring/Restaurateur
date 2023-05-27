@@ -34,21 +34,20 @@ public class CookingArea : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider _other) {
-        if (_other.transform.TryGetComponent<FoodItem>(out FoodItem _food)) {
-            _food.SetEnvironsTemp(currentTemp);
+        if (_other.transform.TryGetComponent<ThermalBody>(out ThermalBody _tBody)) {
+            _tBody.SetEnvironsTemp(currentTemp);
         }
     }
 
     private void OnTriggerStay(Collider _other) {
-        if (_other.transform.TryGetComponent<FoodItem>(out FoodItem _food)) {
-            _food.SetEnvironsTemp(currentTemp);
-        }
-        
+        if (_other.transform.TryGetComponent<ThermalBody>(out ThermalBody _tBody)) {
+            _tBody.SetEnvironsTemp(currentTemp);
+        }        
     }
 
     private void OnTriggerExit(Collider _other) {
-        if (_other.transform.TryGetComponent<FoodItem>(out FoodItem _food)) {
-            _food.SetEnvironsTemp(GameManager.Master.airTemp);
+        if (_other.transform.TryGetComponent<ThermalBody>(out ThermalBody _tBody)) {
+            _tBody.SetEnvironsTemp(GameManager.Master.airTemp);
         }        
     }
 }

@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2539058359031333, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539058359031333, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539058359031333, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539058359031333, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 76023683854937569, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: y
       value: 0.35
@@ -238,6 +254,26 @@ PrefabInstance:
     - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: flavorProfile.Array.data[6].intensity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.profile.Array.data[1].intensity
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.profile.Array.data[2].intensity
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.profile.Array.data[3].intensity
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.profile.Array.data[4].intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397757696166583003, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: flavorProfile.profile.Array.data[5].intensity
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4024345218055123018, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: sprite

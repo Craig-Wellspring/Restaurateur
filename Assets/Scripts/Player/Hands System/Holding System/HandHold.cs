@@ -70,10 +70,10 @@ public class HandHold : MonoBehaviour
         }
     }
 
-    public void PlaceHeldObject(Vector3 _destination, Quaternion _rotation) {
+    public void PlaceHeldObject(Vector3 _destination, Quaternion _rotation, System.Action _callback = null) {
         Transform obj = GetHeldObject();
         ReleaseHeldObject();
-        StartCoroutine(UtilsClass.LerpPosition(obj, _destination, _rotation, player.hands.pickupSpeed));
+        StartCoroutine(UtilsClass.LerpPosition(obj, _destination, _rotation, player.hands.pickupSpeed, _callback));
     }
 
     public void DestroyHeldObject() {

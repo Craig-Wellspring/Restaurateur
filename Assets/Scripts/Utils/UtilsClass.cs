@@ -584,6 +584,7 @@ namespace Scripts.Utils {
         }
 
         public static IEnumerator LerpPosition(Transform _movingObj, Vector3 _targetPos, Quaternion _targetRotation, float _duration, Action _Callback) {
+            if (_Callback == null) _Callback = () => {};
             float time = 0;
             while (time < _duration && _movingObj != null && Vector3.Distance(_movingObj.position, _targetPos) > 0.1f) {
                 _movingObj.position = Vector3.Lerp(_movingObj.position, _targetPos, time / _duration);

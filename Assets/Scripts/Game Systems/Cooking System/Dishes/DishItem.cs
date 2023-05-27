@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DishItem : HoldableItem
+public class DishItem : HoldableItem, IClickable
 {
     // Settings
     public bool disposable = false;
@@ -19,6 +19,11 @@ public class DishItem : HoldableItem
         base.LoadRefs();
         dishMaterial = GetComponent<MeshRenderer>().material;
         dishMaterial.SetFloat("_TextureScale", grimeScale);
+    }
+
+    
+    public override void Click(PlayerManager _player, int _L0orR1) {
+        base.Click(_player, _L0orR1);
     }
 
     public void SetClean(bool _isClean) {

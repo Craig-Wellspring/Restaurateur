@@ -40,6 +40,7 @@
      <Compile Include="Assets\Scripts\Player\PlayerMovementSystem.cs" />
      <Compile Include="Assets\Scripts\Interfaces\IToggleable.cs" />
      <Compile Include="Assets\Scripts\Game Systems\Grid System\Deprecate\HeatMapVisual.cs" />
+     <Compile Include="Assets\Scripts\Game Systems\Cooking System\Dishes\DishManager.cs" />
      <Compile Include="Assets\Scripts\Game Systems\Cooking System\Equipment\Equipment Components\Toggle.cs" />
      <Compile Include="Assets\Scripts\Player\UI System\SliderController.cs" />
      <Compile Include="Assets\Scripts\Player\UI System\Shop UI\ShopUI.cs" />
@@ -126,7 +127,8 @@
      <Compile Include="Assets\Scripts\Game Systems\Cooking System\Food\Cuttable.cs" />
      <Compile Include="Assets\Scripts\Game Systems\TimeManager.cs" />
      <Compile Include="Assets\Scripts\Player\Hands System\Carrying System\CarryPoint.cs" />
-     <Compile Include="Assets\Scripts\Game Systems\Cooking System\Dishes\DishManager.cs" />
+     <Compile Include="Assets\Scripts\Game Systems\Cooking System\Dishes\DishComponent.cs" />
+     <Compile Include="Assets\Scripts\Game Systems\Cooking System\ThermalBody.cs" />
      <None Include="Assets\Raw Imports\TerrainSampleAssets\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
