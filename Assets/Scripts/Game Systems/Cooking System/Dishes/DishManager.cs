@@ -73,7 +73,7 @@ public class DishManager : MonoBehaviour
                 if (mainComponent.IsReset()) {
                     PlateFood(_food.transform, mainComponent);
                     // Dish's thermal conductivity is based on that of the main component
-                    thermalBody.thermalConductivity = _food.thermalBody.thermalConductivity;
+                    thermalBody.density = _food.thermalBody.density;
                     return mainComponent.transform;
                 } else return null;
 
@@ -82,7 +82,7 @@ public class DishManager : MonoBehaviour
                 if (_side != null) {
                     PlateFood(_food.transform, _side);
                     // If there is not yet a main component, base dish's thermal conductivity off of side
-                    if (mainComponent.IsReset()) thermalBody.thermalConductivity = _food.thermalBody.thermalConductivity;
+                    if (mainComponent.IsReset()) thermalBody.density = _food.thermalBody.density;
                     return _side.transform;
                 } else return null;
 
@@ -138,7 +138,7 @@ public class DishManager : MonoBehaviour
         flavorProfile = new();
 
         thermalBody.mass = 0f;
-        thermalBody.thermalConductivity = 1f;
+        thermalBody.density = 1f;
     }
 
 

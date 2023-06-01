@@ -8,7 +8,7 @@ public class CookingSystem : MonoBehaviour
     private static float cookingSpeedModifier = 0.6f;
 
     public static float CalculateAddedCookingProgress(FoodItem _food) {
-        return Mathf.Clamp(((((_food.thermalBody.massTemp - cookingTempThreshold) * 1.2f) / _food.thermalBody.mass) * cookingSpeedModifier), 0, 100);
+        return ((((_food.thermalBody.massTemp - cookingTempThreshold) * 1.2f) / _food.thermalBody.mass) * cookingSpeedModifier);
     }
   
   // public enum UtensilTypes {

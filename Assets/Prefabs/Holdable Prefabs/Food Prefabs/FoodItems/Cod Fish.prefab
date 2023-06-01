@@ -83,6 +83,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1428233245467295531, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2132100628743949004, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -287,6 +291,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4061968922903938833, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_Value
+      value: 0.134
+      objectReference: {fileID: 0}
     - target: {fileID: 5751526241525114865, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -388,6 +396,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8451053628544936604, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451053628544936604, guid: 2aed044bc1edae34a9e4602a2f51253d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -429,6 +441,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ec3fe2dfae34f4c8ae944e04f8e967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cookingRequired: 100
+  overcookBuffer: 100
 --- !u!114 &8258038037950417431
 MonoBehaviour:
   m_ObjectHideFlags: 0

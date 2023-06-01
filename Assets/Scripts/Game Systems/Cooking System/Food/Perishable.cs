@@ -10,12 +10,13 @@ public class Perishable : MonoBehaviour
     public float contamination { get; private set; } = 0f;
 
     // Settings
-    [SerializeField] private static float contaminationRate = 0.1f;
+    [SerializeField] private float maxContam = 100f;
     [SerializeField] private float groundContamRate = 5f;
+
+    [SerializeField] private static float contaminationRate = 0.1f;
 
     // Cache
     private FoodItem food;
-    public static float maxContam { get; private set; } = 100f;
 
     private void Awake() {
         food = GetComponent<FoodItem>();
@@ -34,17 +35,9 @@ public class Perishable : MonoBehaviour
     }
 
     public static float CalculateContamination(float _temp) {
-        float addedContam = 0;
-        switch (_temp) {
-            // Over cooking temperature range, sanitize
-            case > 135: addedContam = -(_temp - 135) * contaminationRate; break;
-            // In critical temperature range, contaminate
-            case > 40: addedContam = (_temp - 40) * contaminationRate; break;
-            // Under freezing temperature range, sanitize
-            case < 33: addedContam = -(33 - _temp) * contaminationRate; break;
-        }
-
-        return addedContam;
+        float addedContam = ((Mathf.Pow(10f, (-Mathf.Pow((_temp - 90f), 2) / 8000f))) * 2) - 1;
+        if (addedContam < 0) addedContam = addedContam *= 50f;
+        return addedContam * contaminationRate;
     }
 
     public void AddContamination(float _added) {

@@ -122,13 +122,13 @@
      <Compile Include="Assets\Scripts\Game Systems\Cooking System\CookingSystem.cs" />
      <Compile Include="Assets\Scripts\Game Systems\Cooking System\Dishes\Drinkware.cs" />
      <Compile Include="Assets\Scripts\Game Systems\Cooking System\Dishes\DishItem.cs" />
+     <Compile Include="Assets\Scripts\Game Systems\Cooking System\Dishes\DishComponent.cs" />
      <Compile Include="Assets\Scripts\Game Systems\Grid System\Deprecate\HeatMapGenericVisual.cs" />
      <Compile Include="Assets\Scripts\Game Systems\Cooking System\Dishes\Flatware.cs" />
      <Compile Include="Assets\Scripts\Game Systems\Cooking System\Food\Cuttable.cs" />
+     <Compile Include="Assets\Scripts\Game Systems\Cooking System\ThermalBody.cs" />
      <Compile Include="Assets\Scripts\Game Systems\TimeManager.cs" />
      <Compile Include="Assets\Scripts\Player\Hands System\Carrying System\CarryPoint.cs" />
-     <Compile Include="Assets\Scripts\Game Systems\Cooking System\Dishes\DishComponent.cs" />
-     <Compile Include="Assets\Scripts\Game Systems\Cooking System\ThermalBody.cs" />
      <None Include="Assets\Raw Imports\TerrainSampleAssets\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

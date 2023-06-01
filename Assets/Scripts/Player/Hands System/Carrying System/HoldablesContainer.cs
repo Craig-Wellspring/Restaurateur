@@ -11,7 +11,7 @@ public class HoldablesContainer : MonoBehaviour, IClickable
     public ItemType exclusiveType;
 
     [Tooltip("Rate at which temperatures adjust, 1 is no insulation (air), 0 is perfect insulation (vacuum)"), Range(0,1)]
-    public float tempLossRate = 1f;
+    public float insulationModifier = 1f;
 
     // States
     public List<object> storedItems = new List<object>();
@@ -41,10 +41,7 @@ public class HoldablesContainer : MonoBehaviour, IClickable
         foreach(object _obj in storedItems) {
             if (_obj.GetType() == typeof(FoodObject)) {
                 FoodObject _food = (FoodObject)_obj;
-                _food.temperature += ((ThermalBody.CalculateHeatChange(_food.mass, _food.conductivity, _food.temperature, ambientTemp) * 15) * tempLossRate);
-
-                if (_food.contamination != null)
-                    _food.contamination = Mathf.Clamp((_food.contamination ?? 0) + Perishable.CalculateContamination(_food.temperature), 0, Perishable.maxContam);
+                _food.NormalizeTemps(ambientTemp, insulationModifier, 15);
             }
         }
     }

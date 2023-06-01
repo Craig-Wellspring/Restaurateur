@@ -5,9 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(FoodItem))]
 public class Cookable : MonoBehaviour
 {
+    // Settings
+    public float cookingRequired = 100f;
+    public float overcookBuffer = 100f;
+
     // States
-    public float cookedProgress { get; private set; } = 0f;
-    public float overcookedProgress { get; private set; } = 0f;
+    public float cookingProgress { get; private set; } = 0f;
+    public float overcookProgress { get; private set; } = 0f;
 
     // Cache
     private FoodItem food;
@@ -29,35 +33,35 @@ public class Cookable : MonoBehaviour
     }
 
     public void SetCookProgress(float _cookTotal) {
-        if (_cookTotal > 100) {
-            cookedProgress = 100;
-            overcookedProgress = _cookTotal - 100;
+        if (_cookTotal > cookingRequired) {
+            cookingProgress = cookingRequired;
+            overcookProgress = _cookTotal - cookingRequired;
         } else {
-            cookedProgress = _cookTotal;
+            cookingProgress = _cookTotal;
         }
-        food.ui.cookDonenessSlider.SetValue(cookedProgress);
-        food.ui.overcookSlider.SetValue(overcookedProgress);
+        food.ui.cookDonenessSlider.SetValue(cookingProgress);
+        food.ui.overcookSlider.SetValue(overcookProgress);
     }
 
     public void Cook(float _added) {
-        if (cookedProgress == 0) {
-            food.ui.cookDonenessSlider.InitializeValues();
+        if (cookingProgress == 0) {
+            food.ui.cookDonenessSlider.InitializeValues(0, cookingRequired);
             food.ui.cookDonenessSlider.Show();
-            food.ui.overcookSlider.InitializeValues();
+            food.ui.overcookSlider.InitializeValues(0, overcookBuffer);
             food.ui.overcookSlider.Show();
         } else {
             food.ui.cookDonenessSlider.TriggerSlider();
         }
 
-        if (cookedProgress < 100) {
-            cookedProgress += _added;
-            if (cookedProgress > 100) cookedProgress = 100;
-            food.ui.cookDonenessSlider.SetValue(cookedProgress);
+        if (cookingProgress < cookingRequired) {
+            cookingProgress += _added;
+            if (cookingProgress > cookingRequired) cookingProgress = cookingRequired;
+            food.ui.cookDonenessSlider.SetValue(cookingProgress);
         } else {
-            if (overcookedProgress < 100) {
-                overcookedProgress += _added;
-                if (overcookedProgress > 100) overcookedProgress = 100;
-                food.ui.overcookSlider.SetValue(overcookedProgress);
+            if (overcookProgress < overcookBuffer) {
+                overcookProgress += _added;
+                if (overcookProgress > overcookBuffer) overcookProgress = overcookBuffer;
+                food.ui.overcookSlider.SetValue(overcookProgress);
             } else return;
         }
     }

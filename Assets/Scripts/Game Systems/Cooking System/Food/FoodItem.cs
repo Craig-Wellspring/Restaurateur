@@ -49,7 +49,7 @@ public class FoodItem : HoldableItem, IClickable
         thermalBody = GetComponent<ThermalBody>();
         ui = GetComponentInChildren<FoodUIManager>();
 
-        thermalBody.TempTick += OnTempTick;
+        thermalBody.OnTempChange += OnTempTick;
 
         // Find mass
         thermalBody = GetComponent<ThermalBody>();
@@ -65,7 +65,7 @@ public class FoodItem : HoldableItem, IClickable
     }
 
     private void OnDestroy() {
-        thermalBody.TempTick -= OnTempTick;
+        thermalBody.OnTempChange -= OnTempTick;
     }
 
     // Season
@@ -108,7 +108,7 @@ public class FoodItem : HoldableItem, IClickable
         componentType = _source.componentType;
 
         thermalBody.mass = _source.thermalBody.mass;
-        thermalBody.thermalConductivity = _source.thermalBody.thermalConductivity;
+        thermalBody.density = _source.thermalBody.density;
 
         SetQuality(_source.quality);
         OverrideFlavorProfile(_source.flavorProfile);
@@ -121,9 +121,9 @@ public class FoodItem : HoldableItem, IClickable
         TryGetComponent<Cuttable>(out Cuttable _cuttable);
         GameObject _go = prefab == null ? this.gameObject : prefab;
 
-        Vector3 _thermalProps = new Vector3(thermalBody.mass, thermalBody.thermalConductivity, thermalBody.massTemp);
+        Vector3 _thermalProps = new Vector3(thermalBody.mass, thermalBody.density, thermalBody.massTemp);
 
-        return FoodObject.Create(_go, sprite, quality, flavorProfile, _thermalProps.x, _thermalProps.y, _thermalProps.z, _perishable?.contamination, _cookable?.cookedProgress + _cookable?.overcookedProgress, _cuttable?.cutProgress);
+        return FoodObject.Create(_go, sprite, quality, flavorProfile, _thermalProps.x, _thermalProps.y, _thermalProps.z, _perishable?.contamination, _cookable?.cookingProgress + _cookable?.overcookProgress, _cuttable?.cutProgress);
     }
 
     public override HoldableObject GenerateObject(Vector2? _modifier) {
@@ -133,9 +133,9 @@ public class FoodItem : HoldableItem, IClickable
         GameObject _go = prefab == null ? this.gameObject : prefab;
         float _quality = (_modifier != null && _modifier != Vector2.zero) ? Random.Range(_modifier.Value.x, _modifier.Value.y) : quality;
 
-        Vector3 _thermalProps = new Vector3(thermalBody?.mass ?? GetComponent<ThermalBody>().mass, thermalBody?.thermalConductivity ?? GetComponent<ThermalBody>().thermalConductivity, thermalBody?.massTemp ?? GetComponent<ThermalBody>().massTemp);
+        Vector3 _thermalProps = new Vector3(thermalBody?.mass ?? GetComponent<ThermalBody>().mass, thermalBody?.density ?? GetComponent<ThermalBody>().density, thermalBody?.massTemp ?? GetComponent<ThermalBody>().massTemp);
 
-        return FoodObject.Create(_go, sprite, _quality, flavorProfile, _thermalProps.x, _thermalProps.y, _thermalProps.z, _perishable?.contamination, _cookable?.cookedProgress + _cookable?.overcookedProgress, _cuttable?.cutProgress);
+        return FoodObject.Create(_go, sprite, _quality, flavorProfile, _thermalProps.x, _thermalProps.y, _thermalProps.z, _perishable?.contamination, _cookable?.cookingProgress + _cookable?.overcookProgress, _cuttable?.cutProgress);
     }
 
 
@@ -165,7 +165,7 @@ public class FoodItem : HoldableItem, IClickable
         }
 
         if (TryGetComponent<Cookable>(out Cookable _cook)) {
-            _assessment += "Cook Quality: " + (_cook.cookedProgress - _cook.overcookedProgress);
+            _assessment += "Cook Quality: " + (_cook.cookingProgress - _cook.overcookProgress);
         }
         Debug.Log(_assessment);
     }
@@ -240,7 +240,7 @@ public class FoodObject : HoldableObject
 
         _newFood.SetTemp(this.temperature);
         _newFood.thermalBody.mass = mass;
-        _newFood.thermalBody.thermalConductivity = conductivity;
+        _newFood.thermalBody.density = conductivity;
 
         if (this.contamination != null && _newObj.TryGetComponent<Perishable>(out Perishable _newPerishable)) {
             _newPerishable.SetContamination((float)this.contamination);
@@ -253,5 +253,12 @@ public class FoodObject : HoldableObject
         }
 
         return _newObj;
+    }
+
+    public void NormalizeTemps(float _ambient, float _insulation, float _tickMultiplier = 1f) {
+        temperature += ((ThermalBody.CalculateHeatChange(mass, conductivity, temperature, _ambient) * _tickMultiplier) * _insulation);
+
+        if (contamination != null)
+            contamination = Mathf.Clamp((contamination ?? 0) + Perishable.CalculateContamination(temperature), 0, 100);
     }
 }
